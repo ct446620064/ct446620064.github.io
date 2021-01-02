@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-02T09:52:52.295Z</updated>
+  <updated>2021-01-02T10:09:52.737Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,11 +21,20 @@
     <link href="http://example.com/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/"/>
     <id>http://example.com/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/</id>
     <published>2021-01-02T09:52:52.000Z</published>
-    <updated>2021-01-02T09:52:52.295Z</updated>
+    <updated>2021-01-02T10:09:52.737Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="vscode配置c-环境"><a href="#vscode配置c-环境" class="headerlink" title="vscode配置c++环境"></a>vscode配置c++环境</h1><h2 id="1-配置c-IntelliSense"><a href="#1-配置c-IntelliSense" class="headerlink" title="1.配置c++ IntelliSense"></a>1.配置c++ IntelliSense</h2><p>使用<code>F1</code> 快捷键打开命令选项，输入<code>C/C++:Edit configuration</code>，然后在<code>.vscode</code>文件夹自动生成<code>c_cpp_properties.json</code>配置文件。</p><h2 id="2-launch-json配置文件"><a href="#2-launch-json配置文件" class="headerlink" title="2.launch.json配置文件"></a>2.launch.json配置文件</h2><p>在debug界面中添加配置，然后选<code>c++(gdb/lgdb)</code>选项，然后自动生成<code>launch.json</code>配置文件，该配置文件主要用于调试时的加载控制。</p><h2 id="3-tasks-json配置文件"><a href="#3-tasks-json配置文件" class="headerlink" title="3.tasks.json配置文件"></a>3.tasks.json配置文件</h2><p>在命令窗口中输入task，选择<code>task:configure task</code>选项，生成<code>task.json</code>配置文件。</p><p>注意：<code>task.json</code>中的<code>label</code>属性值要和<code>launch.json</code>中<code>preLaunchTask</code>属性值相同。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;vscode配置c-环境&quot;&gt;&lt;a href=&quot;#vscode配置c-环境&quot; class=&quot;headerlink&quot; title=&quot;vscode配置c++环境&quot;&gt;&lt;/a&gt;vscode配置c++环境&lt;/h1&gt;&lt;h2 id=&quot;1-配置c-IntelliSense&quot;&gt;&lt;a </summary>
+      
     
     
     
     
+    <category term="vscode" scheme="http://example.com/tags/vscode/"/>
     
   </entry>
   
