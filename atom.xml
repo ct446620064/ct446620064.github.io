@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-02T07:43:34.214Z</updated>
+  <updated>2021-01-02T09:18:22.460Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,13 +17,47 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>1</title>
+    <link href="http://example.com/2021/01/02/01/"/>
+    <id>http://example.com/2021/01/02/01/</id>
+    <published>2021-01-02T09:17:56.000Z</published>
+    <updated>2021-01-02T09:18:22.460Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>article3</title>
+    <link href="http://example.com/2021/01/02/article/index/"/>
+    <id>http://example.com/2021/01/02/article/index/</id>
+    <published>2021-01-02T07:44:44.000Z</published>
+    <updated>2021-01-02T07:45:32.391Z</updated>
+    
+    <content type="html"><![CDATA[<p>new 了一个layout为page的文章</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;new 了一个layout为page的文章&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>article2</title>
     <link href="http://example.com/2021/01/02/article2/"/>
     <id>http://example.com/2021/01/02/article2/</id>
     <published>2021-01-02T07:39:47.000Z</published>
-    <updated>2021-01-02T07:43:34.214Z</updated>
+    <updated>2021-01-02T08:39:46.893Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Article2"><a href="#Article2" class="headerlink" title="Article2"></a>Article2</h1><p>这是一篇文章用来写博客的。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure><p>好了，提交试试！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Article2"><a href="#Article2" class="headerlink" title="Article2"></a>Article2</h1><p>这是一篇文章用来写博客的。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure><p>好了，提交试试！</p><h2 id="二级标题1"><a href="#二级标题1" class="headerlink" title="二级标题1"></a>二级标题1</h2><h3 id="三级标题1"><a href="#三级标题1" class="headerlink" title="三级标题1"></a>三级标题1</h3><p>哈哈哈</p><h2 id="二级标题2"><a href="#二级标题2" class="headerlink" title="二级标题2"></a>二级标题2</h2><h3 id="三级标题2"><a href="#三级标题2" class="headerlink" title="三级标题2"></a>三级标题2</h3><p>哈哈哈</p><h2 id="二级标题3"><a href="#二级标题3" class="headerlink" title="二级标题3"></a>二级标题3</h2><h3 id="三级标题3"><a href="#三级标题3" class="headerlink" title="三级标题3"></a>三级标题3</h3><p>哈哈哈</p>]]></content>
     
     
       
@@ -38,24 +72,11 @@
   </entry>
   
   <entry>
-    <title>article1</title>
-    <link href="http://example.com/2021/01/01/article1/"/>
-    <id>http://example.com/2021/01/01/article1/</id>
-    <published>2021-01-01T11:52:56.000Z</published>
-    <updated>2021-01-01T11:52:56.797Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2021/01/01/hi/"/>
-    <id>http://example.com/2021/01/01/hi/</id>
-    <published>2021-01-01T07:35:19.549Z</published>
-    <updated>2021-01-01T07:35:22.518Z</updated>
+    <title>article5</title>
+    <link href="http://example.com/2021/01/02/hi/"/>
+    <id>http://example.com/2021/01/02/hi/</id>
+    <published>2021-01-02T07:00:00.000Z</published>
+    <updated>2021-01-02T08:21:04.129Z</updated>
     
     <content type="html"><![CDATA[<p>你好！</p>]]></content>
     
@@ -65,6 +86,21 @@
     <summary type="html">&lt;p&gt;你好！&lt;/p&gt;
 </summary>
       
+    
+    
+    
+    
+    <category term="s" scheme="http://example.com/tags/s/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>article1</title>
+    <link href="http://example.com/2021/01/01/article1/"/>
+    <id>http://example.com/2021/01/01/article1/</id>
+    <published>2021-01-01T11:52:56.000Z</published>
+    <updated>2021-01-01T11:52:56.797Z</updated>
+    
     
     
     
