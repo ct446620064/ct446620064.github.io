@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-01T11:52:56.797Z</updated>
+  <updated>2021-01-02T07:43:34.214Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>article2</title>
+    <link href="http://example.com/2021/01/02/article2/"/>
+    <id>http://example.com/2021/01/02/article2/</id>
+    <published>2021-01-02T07:39:47.000Z</published>
+    <updated>2021-01-02T07:43:34.214Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Article2"><a href="#Article2" class="headerlink" title="Article2"></a>Article2</h1><p>这是一篇文章用来写博客的。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure><p>好了，提交试试！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Article2&quot;&gt;&lt;a href=&quot;#Article2&quot; class=&quot;headerlink&quot; title=&quot;Article2&quot;&gt;&lt;/a&gt;Article2&lt;/h1&gt;&lt;p&gt;这是一篇文章用来写博客的。&lt;/p&gt;
+&lt;figure class=&quot;highlight c++</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>article1</title>
