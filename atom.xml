@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-02T10:09:52.737Z</updated>
+  <updated>2021-01-03T04:06:18.056Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CodeLite调试时查看数组内容</title>
+    <link href="http://example.com/2021/01/03/CodeLite%E8%B0%83%E8%AF%95%E6%97%B6%E6%9F%A5%E7%9C%8B%E6%95%B0%E7%BB%84%E5%86%85%E5%AE%B9/"/>
+    <id>http://example.com/2021/01/03/CodeLite%E8%B0%83%E8%AF%95%E6%97%B6%E6%9F%A5%E7%9C%8B%E6%95%B0%E7%BB%84%E5%86%85%E5%AE%B9/</id>
+    <published>2021-01-03T04:04:33.000Z</published>
+    <updated>2021-01-03T04:06:18.056Z</updated>
+    
+    <content type="html"><![CDATA[<p>添加监视的变量名为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(int[10]*)a</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;添加监视的变量名为：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;co</summary>
+      
+    
+    
+    
+    
+    <category term="CodeLite" scheme="http://example.com/tags/CodeLite/"/>
+    
+  </entry>
   
   <entry>
     <title>vscode配置c++环境</title>
