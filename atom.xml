@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-01-03T04:06:18.056Z</updated>
+  <updated>2021-01-05T08:39:23.747Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker</title>
+    <link href="http://example.com/2021/01/03/Docker/"/>
+    <id>http://example.com/2021/01/03/Docker/</id>
+    <published>2021-01-03T08:13:14.000Z</published>
+    <updated>2021-01-05T08:39:23.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>Docker和虚拟机的不同：</p><ul><li>传统虚拟机，虚拟出一套硬件，在硬件之上运行一个完整的操作系统，然后在操作系统上安装和运行软件。</li><li>容器内的应用直接运行在宿主机的内核上，容器没有自己的内核，也没有虚拟出硬件。</li><li>每个容器之间是相互隔离的，每个容器都有一个属于自己的文件系统，互不影响。</li></ul><h2 id="Docker镜像命令"><a href="#Docker镜像命令" class="headerlink" title="Docker镜像命令"></a>Docker镜像命令</h2><h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><p>使用方式：</p><blockquote><p>docker images [option] [repository[:TAG]]</p></blockquote><p>示例：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker images</span></span><br><span class="line">REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">hello-world                      latest              bf756fb1ae65        12 months ago       13.3kB</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解释</span></span><br><span class="line">REPOSITORY 镜像的仓库源</span><br><span class="line">TAG    镜像的标签</span><br><span class="line">IMAGE ID   镜像ID</span><br><span class="line">CREATED   镜像创建时间</span><br><span class="line">SIZE   镜像的大小</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可选项</span></span><br><span class="line">--all , -a # 显示所有镜像 (default hides intermediate images)</span><br><span class="line">--digests # Show digests</span><br><span class="line">--filter , -f # Filter output based on conditions provided</span><br><span class="line">--format # Pretty-print images using a Go template</span><br><span class="line">--no-trunc # 3Don’t truncate output</span><br><span class="line">--quiet , -q # Only show image IDs</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">只显示镜像ID</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker images -q</span></span><br><span class="line">7c3ce33e4a1f</span><br><span class="line">ec3789272a09</span><br><span class="line">698ab9017c5b</span><br><span class="line">19d9cb152dda</span><br></pre></td></tr></table></figure><h3 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h3><p>使用方式：</p><blockquote><p>docker search [OPTION] TERM</p></blockquote><p>示例：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker search mysql</span></span><br><span class="line">NAME                              DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED</span><br><span class="line">mysql                             MySQL is a widely used, open-source relation…   10339               [OK]                </span><br><span class="line">mariadb                           MariaDB is a community-developed fork of MyS…   3832                [OK]                </span><br><span class="line">mysql/mysql-server                Optimized MySQL Server Docker images. Create…   757                                     [OK]</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索时添加过滤条件为STARS不小于3000</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker search mysql --filter=STARS=3000</span></span><br><span class="line">NAME                DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED</span><br><span class="line">mysql               MySQL is a widely used, open-source relation…   10339               [OK]                </span><br><span class="line">mariadb             MariaDB is a community-developed fork of MyS…   3832                [OK]         </span><br></pre></td></tr></table></figure><p>搜索时</p><h3 id="查看某个命令的可选项"><a href="#查看某个命令的可选项" class="headerlink" title="查看某个命令的可选项"></a>查看某个命令的可选项</h3><p>使用方式：</p><blockquote><p>docker [命令名称] –help</p></blockquote><p>示例：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker images --<span class="built_in">help</span></span></span><br><span class="line"></span><br><span class="line">Usage:docker images [OPTIONS] [REPOSITORY[:TAG]]</span><br><span class="line"></span><br><span class="line">List images</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -a, --all             Show all images (default hides intermediate images)</span><br><span class="line">      --digests         Show digests</span><br><span class="line">  -f, --filter filter   Filter output based on conditions provided</span><br><span class="line">      --format string   Pretty-print images using a Go template</span><br><span class="line">      --no-trunc        Don&#x27;t truncate output</span><br><span class="line">  -q, --quiet           Only show numeric IDs</span><br></pre></td></tr></table></figure><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><p>使用方式：</p><blockquote><p>docker pull [OPTION] NAME[:TAG|@DIGEST] </p></blockquote><p>示例：</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Docker和虚拟机的不同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;传统虚拟机，虚拟出一套硬件，在硬件之上运行一个完整的操作系统，然后在操作系统上安装和运行软件。&lt;/li&gt;
+&lt;li&gt;容器内的应用直接运行在宿主机的内核上，容器没有自己的内核，也没有虚拟出硬件。&lt;/li&gt;
+&lt;li&gt;每个容器</summary>
+      
+    
+    
+    
+    
+    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>CodeLite调试时查看数组内容</title>
@@ -62,19 +88,6 @@
   </entry>
   
   <entry>
-    <title>1</title>
-    <link href="http://example.com/2021/01/02/01/"/>
-    <id>http://example.com/2021/01/02/01/</id>
-    <published>2021-01-02T09:17:56.000Z</published>
-    <updated>2021-01-02T09:18:22.460Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>article3</title>
     <link href="http://example.com/2021/01/02/article/index/"/>
     <id>http://example.com/2021/01/02/article/index/</id>
@@ -89,63 +102,6 @@
     <summary type="html">&lt;p&gt;new 了一个layout为page的文章&lt;/p&gt;
 </summary>
       
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>article2</title>
-    <link href="http://example.com/2021/01/02/article2/"/>
-    <id>http://example.com/2021/01/02/article2/</id>
-    <published>2021-01-02T07:39:47.000Z</published>
-    <updated>2021-01-02T08:39:46.893Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Article2"><a href="#Article2" class="headerlink" title="Article2"></a>Article2</h1><p>这是一篇文章用来写博客的。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure><p>好了，提交试试！</p><h2 id="二级标题1"><a href="#二级标题1" class="headerlink" title="二级标题1"></a>二级标题1</h2><h3 id="三级标题1"><a href="#三级标题1" class="headerlink" title="三级标题1"></a>三级标题1</h3><p>哈哈哈</p><h2 id="二级标题2"><a href="#二级标题2" class="headerlink" title="二级标题2"></a>二级标题2</h2><h3 id="三级标题2"><a href="#三级标题2" class="headerlink" title="三级标题2"></a>三级标题2</h3><p>哈哈哈</p><h2 id="二级标题3"><a href="#二级标题3" class="headerlink" title="二级标题3"></a>二级标题3</h2><h3 id="三级标题3"><a href="#三级标题3" class="headerlink" title="三级标题3"></a>三级标题3</h3><p>哈哈哈</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Article2&quot;&gt;&lt;a href=&quot;#Article2&quot; class=&quot;headerlink&quot; title=&quot;Article2&quot;&gt;&lt;/a&gt;Article2&lt;/h1&gt;&lt;p&gt;这是一篇文章用来写博客的。&lt;/p&gt;
-&lt;figure class=&quot;highlight c++</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>article5</title>
-    <link href="http://example.com/2021/01/02/hi/"/>
-    <id>http://example.com/2021/01/02/hi/</id>
-    <published>2021-01-02T07:00:00.000Z</published>
-    <updated>2021-01-02T08:21:04.129Z</updated>
-    
-    <content type="html"><![CDATA[<p>你好！</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;你好！&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-    <category term="s" scheme="http://example.com/tags/s/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>article1</title>
-    <link href="http://example.com/2021/01/01/article1/"/>
-    <id>http://example.com/2021/01/01/article1/</id>
-    <published>2021-01-01T11:52:56.000Z</published>
-    <updated>2021-01-01T11:52:56.797Z</updated>
-    
     
     
     
