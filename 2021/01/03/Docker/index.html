@@ -24,7 +24,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
 <meta property="article:published_time" content="2021-01-03T08:13:14.000Z">
-<meta property="article:modified_time" content="2021-01-05T10:36:13.578Z">
+<meta property="article:modified_time" content="2021-01-05T15:56:45.680Z">
 <meta property="article:author" content="realxz">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -138,7 +138,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~5.07K
+                            ~7.08K
                         
                         字
                         
@@ -304,6 +304,68 @@
 <blockquote>
 <p>Ctrl + P + Q</p>
 </blockquote>
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><p>使用方式：</p>
+<blockquote>
+<p>docker rm [OPTIONS] CONTAINER [CONTAINER…]</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Option选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--force , -f</code></td>
+<td>Force the removal of a running container (uses SIGKILL)</td>
+</tr>
+<tr>
+<td><code>--link , -l</code></td>
+<td>Remove the specified link</td>
+</tr>
+<tr>
+<td><code>--volumes , -v</code></td>
+<td>Remove anonymous volumes associated with the container</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker rm fbddb27d188f</span></span><br><span class="line">fbddb27d188f</span><br></pre></td></tr></table></figure>
+<p><strong>启动容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker start [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p><strong>重启容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker restart [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p><strong>停止容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker stop [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p><strong>强制停止当前容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker <span class="built_in">kill</span> [容器ID]</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h2><p><strong>后台运行容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d centos</span></span><br><span class="line">f3cc16b38e9dc3e281681f226128b3f084aec79b9d9c27721a83f36189fdaebc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> lize @ lize-linux <span class="keyword">in</span> ~ [21:15:59]</span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span>           </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> lize @ lize-linux <span class="keyword">in</span> ~ [21:16:04]</span> </span><br><span class="line"><span class="meta">$</span><span class="bash"> docker ps -all</span>      </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES</span><br><span class="line">f3cc16b38e9d        centos              &quot;/bin/bash&quot;         12 seconds ago      Exited (0) 11 seconds ago                       elegant_archimedes</span><br></pre></td></tr></table></figure>
+<p><code>docker run -d centos</code>中的-d表示后台运行，但是该后台运行必须对应一个前台进程，否则docker会将这个容器停止。</p>
+<p><strong>查看日志</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker logs -tf --tail 10 [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p><code>-tf</code>表示显示日志， <code>--tail [数字]</code>表示要显示日志条数。</p>
+<p><strong>查看容器内部进程</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker top [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker top 8326642ceb7d</span>        </span><br><span class="line">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD</span><br><span class="line">root                20286               20264               0                   21:46               pts/0               00:00:00            /bin/bash</span><br></pre></td></tr></table></figure>
+<p><strong>查看容器的元数据</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker inspect [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p><strong>进入当前正在运行的容器</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker <span class="built_in">exec</span> -it [容器ID] bashshell</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker attach [容器ID]</span></span><br></pre></td></tr></table></figure>
+<p>两者区别：<code>docker exec </code>在进入容器后开启一个新的终端，<code>docker attach </code>在进入容器后使用正在执行的一个终端。</p>
+<p><strong>将容器内部的文件拷贝到主机上</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker cp [容器ID]:[容器中的文件路径] [主机文件夹路径]</span></span><br></pre></td></tr></table></figure>
+<p>![](/home/lize/Pictures/Screenshot from 2021-01-05 23-14-52.png)</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>docker部署nginx并完成端口映射</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d --name nginx01 -p 3344:80 nginx</span></span><br><span class="line">f358c945ae0eed75160c006a0a3fac73028c9aa73f1ed2b87e6c12d708aa17fe</span><br></pre></td></tr></table></figure>
+<p>端口映射原理：</p>
+<p><img src="/home/lize/ct446620064.github.io/source/_posts/images/docker01.png"></p>
+<p>访问测试：</p>
+<p><img src="/home/lize/ct446620064.github.io/source/_posts/images/docker02.png"></p>
 
             </div>
             
