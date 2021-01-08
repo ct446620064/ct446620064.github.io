@@ -24,7 +24,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
 <meta property="article:published_time" content="2021-01-03T08:13:14.000Z">
-<meta property="article:modified_time" content="2021-01-07T08:51:51.018Z">
+<meta property="article:modified_time" content="2021-01-08T13:25:01.963Z">
 <meta property="article:author" content="realxz">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -138,7 +138,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~9.02K
+                            ~9.40K
                         
                         字
                         
@@ -404,6 +404,24 @@
 <p>实战：</p>
 <p>将mysql配置目录和数据目录与主机目录进行双向绑定：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span></span><br><span class="line">da57dd0c24e10ccec927594c1c5adc83a5ae60207697cd8a2d73ed0a9b777059</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-d 后台运行</p>
+<p>-p 端口映射</p>
+<p>-v 数据卷挂载</p>
+<p>-e 环境配置</p>
+<p>–name 容器名字</p>
+</blockquote>
+<p>上面这条命令完成了以下操作：</p>
+<ul>
+<li>在后台运行mysql</li>
+<li>将主机3310端口映射到此容器的3306端口</li>
+<li>将主机/home/mysql/conf目录与容器中的etc/mysql/conf.d目录双向绑定</li>
+<li>将主机/home/mysql/data目录与容器中的/var/lib/mysql目录双向绑定</li>
+<li>配置mysql的密码为123456</li>
+<li>容器的名称为mysql01</li>
+</ul>
+<p>在主机上使用mysql workbench连接localhost:3310，如果连接成功，这就表示端口映射成功。然后使用mysql workbench创建一个名称为test的数据库，在主机的/home/mysql/data目录查看，发现多出一个test目录，并且数据卷挂载成功！</p>
+<p>容器删除后，test目录将依旧存在。</p>
 
             </div>
             
@@ -497,7 +515,7 @@
                         <a class="tag-none-link" href="/tags/Docker/" rel="tag">Docker</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-01-07</span>
+                    <span>最后编辑：2021-01-08</span>
                     </div>
                 </div>
             </footer>
@@ -547,7 +565,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/CodeLite/" style="font-size: 0.6em;">CodeLite</a> <a href="/tags/Docker/" style="font-size: 0.6em;">Docker</a> <a href="/tags/ubuntu/" style="font-size: 0.6em;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 0.6em;">vscode</a>
+        <a href="/tags/CodeLite/" style="font-size: 0.6em;">CodeLite</a> <a href="/tags/Docker/" style="font-size: 0.8em;">Docker</a> <a href="/tags/ubuntu/" style="font-size: 0.6em;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 0.6em;">vscode</a>
       </div>
   </aside>
 
@@ -558,6 +576,18 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2021/01/08/Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/"><i class="fa  fa-book"></i> Docker匿名挂载和具名挂载</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2021/01/08/%E4%BD%BF%E7%94%A8dockerfile%E5%88%9B%E5%BB%BADocker%E9%95%9C%E5%83%8F/"><i class="fa  fa-book"></i> 使用dockerfile创建Docker镜像</a>
+            
+          
         
           
           
@@ -578,17 +608,9 @@
           
         
           
-          
-            <a class="list-group-item" href="/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/"><i class="fa  fa-book"></i> vscode配置c++环境</a>
             
           
-        
-          
-          
-            <a class="list-group-item" href="/2021/01/01/hello-world/"><i class="fa  fa-book"></i> Hello World</a>
             
-          
-        
       </ul>
   </div>
   </aside>
