@@ -24,7 +24,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
 <meta property="article:published_time" content="2021-01-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-08T04:22:57.797Z">
+<meta property="article:modified_time" content="2021-01-08T07:26:48.808Z">
 <meta property="article:author" content="realxz">
 <meta property="article:tag" content="ubuntu">
 <meta name="twitter:card" content="summary">
@@ -138,7 +138,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~2.19K
+                            ~4.55K
                         
                         字
                         
@@ -181,6 +181,51 @@
 <h2 id="确保PPA对你的发行版本是可用的"><a href="#确保PPA对你的发行版本是可用的" class="headerlink" title="确保PPA对你的发行版本是可用的"></a>确保PPA对你的发行版本是可用的</h2><p>当在Ubuntu或其他基于Debian的发行版来说，有一点事情要牢记。</p>
 <p>不是所有的PPA对你的特定的发行版是可用的。你应该知道<a>哪一个Ubuntu版本</a>是你正在使用的。发行的codename是重要的，因为当你转到某个PPA网页时，你能看到那一个Ubuntu版本是PPA所支持的。</p>
 <p>对于其他基于Ubuntu的发行版，你可以检查这目录<code>/etc/os-release</code>，找到Ubuntu 的版本信息。</p>
+<p><a target="_blank" rel="noopener" href="https://itsfoss.com/how-to-know-ubuntu-unity-version/">https://itsfoss.com/how-to-know-ubuntu-unity-version/</a></p>
+<p>如何知道PPA的URL呢？在网络上简单搜索PPA的名称，如ppa:dr-akulavich/lighttable 并且你应该获得Launchpad网站的第一个结果，Launchpad是存储PPA的官方平台。在那你也能直接地去发布和搜索需要的PPA。</p>
+<p>如果你没有核实并添加PPA，当你尝试去安装一个对你系统版本不可用的软件时，你可能看到一个错误：</p>
+<blockquote>
+<p>E: Unable to locate package</p>
+</blockquote>
+<p>更糟糕的是自从它被加入到你的<code>source.list</code>后，你每次运行软件更新（software updater），你将会看到一个错误：<a target="_blank" rel="noopener" href="https://itsfoss.com/failed-to-download-repository-information-ubuntu-13-04/">Failed to download repository information</a></p>
+<p>如果你在终端中运行<code>sudo apt update</code>命令，这可错误将会更详细地显示是哪一个库造成了这个问题。你能在输入命令后看到如下信息：</p>
+<blockquote>
+<p>W: Failed to fetch <a target="_blank" rel="noopener" href="http://ppa.launchpad.net/venerix/pkg/ubuntu/dists/raring/main/binary-i386/Packages">http://ppa.launchpad.net/venerix/pkg/ubuntu/dists/raring/main/binary-i386/Packages</a>  404  Not Found<br>E: Some index files failed to download. They have been ignored, or old ones used instead.</p>
+</blockquote>
+<p>无需解释，明显是因为系统无法发现使用于你的版本的库。</p>
+<p>还记得我们之前看到的库结构吗？APT将尝试在<code>http://ppa.launchpad.net/&lt;PPA_NAME&gt;/ubuntu/dists/Ubuntu_Version</code>这个位置寻找软件信息。</p>
+<p>并且如果PPA对于指定版本是不可用的，他将永远不能打开这个URL，并且你会看到著名的404错误。</p>
+<h2 id="为什么PPAs不是对所有的Ubuntu发行版都可用呢？"><a href="#为什么PPAs不是对所有的Ubuntu发行版都可用呢？" class="headerlink" title="为什么PPAs不是对所有的Ubuntu发行版都可用呢？"></a>为什么PPAs不是对所有的Ubuntu发行版都可用呢？</h2><p>这是因为有人必须编译这个软件并且在特定版本上创建PPA。考虑到每6个月发行一次Ubuntu版本，为每一个Ubuntu发行版更新PPA是一个烦人的任务。</p>
+<h2 id="如果PPA对你的版本是不可用，那么该如何安装应用程序？"><a href="#如果PPA对你的版本是不可用，那么该如何安装应用程序？" class="headerlink" title="如果PPA对你的版本是不可用，那么该如何安装应用程序？"></a>如果PPA对你的版本是不可用，那么该如何安装应用程序？</h2><p>尽管PPA对你的版本是不可用的，那么安装程序也是可能的。你仍然可以下载DEB文件，然后安装这个应用程序。</p>
+<p>假设你转到Light Table PPA页面。使用刚刚所学的PPA的知识，你了解到PPA是对你的Ubuntu版本不可用。</p>
+<p>你能做的是点击<code>View package details’</code></p>
+<p>在那，你能点击一个包去揭露更多详情信息。你也将发现源代码和DEB文件。</p>
+<p>我建议使用<a target="_blank" rel="noopener" href="https://itsfoss.com/gdebi-default-ubuntu-software-center/">using Gdebi to install these DEB files</a>而不是软件中心，因为Gdebi是比处理依赖要好的多。</p>
+<p>请注意，这种方式安装的软件包可能不会在未来更新。</p>
+<p>我认为你已经阅读了关于添加PPAs足够多的内容。如何一处PPA并且由它安装的软件呢？</p>
+<h2 id="如何删除PPA？"><a href="#如何删除PPA？" class="headerlink" title="如何删除PPA？"></a>如何删除PPA？</h2><p>我曾经写了关于如何删除PPA，我在这也会描述一些方法。</p>
+<p><a target="_blank" rel="noopener" href="https://itsfoss.com/how-to-remove-or-delete-ppas-quick-tip/">https://itsfoss.com/how-to-remove-or-delete-ppas-quick-tip/</a></p>
+<p>我建议你删除从PPA中安装的软件之前先删除PPA。如果你仅仅移除PPA，已安装的软件仍然在你的系统中，他不会获取任何更新。你不想这样，对吗？</p>
+<p>因此问题来了，如何知道那个应用使用哪个PPA安装的呢？</p>
+<h2 id="寻找由PPA安装的package并删除他们"><a href="#寻找由PPA安装的package并删除他们" class="headerlink" title="寻找由PPA安装的package并删除他们"></a>寻找由PPA安装的package并删除他们</h2><p>Ubuntu的软件中心不会帮助。你将必须使用Synaptic package manager，它有更多高级特性。</p>
+<p>你能在Ubuntu上安装Synaptic，或者使用以下命令：</p>
+<blockquote>
+<p>sudo apt install synaptic</p>
+</blockquote>
+<p>安装后启动Synaptic package manager，并选择Origin。你将看到各种各样的加入到系统中的库。PPA条目以PPA为前缀。点击他们查看PPA可用的软件包。已安装的软件在它之前将会有适当的符号。</p>
+<p>在你发现软件包之后，你能从Synaptic上删除他们。另外，你总是能使用这个命令：</p>
+<blockquote>
+<p>sudo apt remove package_name</p>
+</blockquote>
+<p>在你删除由PPA安装的软件包后，你能从你的<code>sources.list</code>中继续删除这个PPA。</p>
+<h2 id="图形化地删除PPA"><a href="#图形化地删除PPA" class="headerlink" title="图形化地删除PPA"></a>图形化地删除PPA</h2><p>打开Software &amp; Updates，然后打开Other Software标签。寻找你要删除的PPA。</p>
+<p>在这你有两个选项。要不取消选定PPA，要不你选择Remove选项。</p>
+<p>两者不同的是当你取消选定PPA条目时，你的系统将在<code>/etc/apt/sources.list.d </code>目录下<code>ppa_name.list </code>文件中注释掉库条目，但是你选择Remove选项它就会从<code>/etc/apt/sources.list.d</code>目录下<code>ppa_name.list</code>文件中删除库条目。</p>
+<p>这两种情况，<code>ppa_name.list</code>文件存在于那个目录中，即使它是空的。</p>
+<h2 id="使用PPA安全吗？"><a href="#使用PPA安全吗？" class="headerlink" title="使用PPA安全吗？"></a>使用PPA安全吗？</h2><p>这是一个主观性的问题。纯粹主义者讨厌PPA，因为大多数情况下PPAs是来自与第三方开发者。但是与此同时，由于提供了一个更容易的安装选项，PPAs是在Debian/Ubuntu世界是受欢迎的。</p>
+<p>就安全性而言，你使用PPA和Linux系统受到恶意软件的攻击或劫持是几乎不可能的。到目前为止，我想不起这种偶然事件曾经发生过。</p>
+<p>官方PPAs能被使用，这无需多想。使用非官方PPA完全取决于你的决定。</p>
+<p>根据经验，如果该程序需要sudo权限才能运行，则应避免通过第三方PPA安装该程序。</p>
 
             </div>
             
