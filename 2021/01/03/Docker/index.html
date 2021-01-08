@@ -24,7 +24,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
 <meta property="article:published_time" content="2021-01-03T08:13:14.000Z">
-<meta property="article:modified_time" content="2021-01-05T15:56:45.680Z">
+<meta property="article:modified_time" content="2021-01-07T08:51:51.018Z">
 <meta property="article:author" content="realxz">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -138,7 +138,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~7.08K
+                            ~9.02K
                         
                         字
                         
@@ -360,12 +360,50 @@
 <p><strong>将容器内部的文件拷贝到主机上</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker cp [容器ID]:[容器中的文件路径] [主机文件夹路径]</span></span><br></pre></td></tr></table></figure>
 <p>![](/home/lize/Pictures/Screenshot from 2021-01-05 23-14-52.png)</p>
-<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>docker部署nginx并完成端口映射</p>
+<h2 id="作业1：docker部署nginx"><a href="#作业1：docker部署nginx" class="headerlink" title="作业1：docker部署nginx"></a>作业1：docker部署nginx</h2><p>docker部署nginx并完成端口映射</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d --name nginx01 -p 3344:80 nginx</span></span><br><span class="line">f358c945ae0eed75160c006a0a3fac73028c9aa73f1ed2b87e6c12d708aa17fe</span><br></pre></td></tr></table></figure>
-<p>端口映射原理：</p>
-<p><img src="/home/lize/ct446620064.github.io/source/_posts/images/docker01.png"></p>
-<p>访问测试：</p>
-<p><img src="/home/lize/ct446620064.github.io/source/_posts/images/docker02.png"></p>
+<h2 id="作业2：docker部署tomcat"><a href="#作业2：docker部署tomcat" class="headerlink" title="作业2：docker部署tomcat"></a>作业2：docker部署tomcat</h2><p>官方使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it --rm tomcat</span></span><br></pre></td></tr></table></figure>
+<p><code>--rm</code>表示停止容器后将无法查询到该容器，先在本地镜像中寻找tomcat，本地镜像没有则去docker 仓库下载。</p>
+<p>后台运行tomcat：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d  -p 3355:8080 --name tomcat01 tomcat</span></span><br></pre></td></tr></table></figure>
+<p>但是访问localhost:3355出现404,这是因为tomcat中的webapps目录中没有任何项目。</p>
+<p>将webapps.dist中的项目复制到webapps中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@8be6bf1b1aa5:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br></pre></td></tr></table></figure>
+<p>再次访问localhost:3355则出现tomcat欢迎界面。</p>
+<h2 id="Docker可视化界面"><a href="#Docker可视化界面" class="headerlink" title="Docker可视化界面"></a>Docker可视化界面</h2><p>portainer是Docker图形化界面管理工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -p 8088:9000 \</span></span><br><span class="line"><span class="bash">--restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=<span class="literal">true</span> portainer/portainer</span></span><br></pre></td></tr></table></figure>
+<p>访问测试：localhost:8088</p>
+<h2 id="Docker镜像讲解"><a href="#Docker镜像讲解" class="headerlink" title="Docker镜像讲解"></a>Docker镜像讲解</h2><h3 id="镜像是什么"><a href="#镜像是什么" class="headerlink" title="镜像是什么"></a>镜像是什么</h3><p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。</p>
+<p>如何得到镜像：</p>
+<ul>
+<li>从远程仓库下载</li>
+<li>从朋友处拷贝</li>
+<li>自己制作一个镜像Dockerfile</li>
+</ul>
+<h2 id="Commit命令"><a href="#Commit命令" class="headerlink" title="Commit命令"></a>Commit命令</h2><p>将现有容器打包成镜像。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it tomcat /bin/bash</span></span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# ls</span><br><span class="line">BUILDING.txt	 LICENSE  README.md	 RUNNING.txt  conf  logs	    temp     webapps.dist</span><br><span class="line">CONTRIBUTING.md  NOTICE   RELEASE-NOTES  bin	      lib   native-jni-lib  webapps  work</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# cd webapps</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat/webapps# ls</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat/webapps# </span><br></pre></td></tr></table></figure>
+<p>docker提供的tomcat镜像中的webapps目录下没有项目。</p>
+<p>将webapp.dist目录中的项目复制到webapps目录下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat# cd webapps</span><br><span class="line">root@cdcbb2f5b3aa:/usr/local/tomcat/webapps# ls</span><br><span class="line">ROOT  docs  examples  host-manager  manager</span><br></pre></td></tr></table></figure>
+<p>将该容器打包成镜像：</p>
+<p>使用方式：</p>
+<blockquote>
+<p>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker commit -a=<span class="string">&quot;lize&quot;</span> -m=<span class="string">&quot;add webapps apps&quot;</span> 53b95fab247a tomcat01:1.0</span></span><br></pre></td></tr></table></figure>
+<p><code>-a</code>表示作者，<code>-m</code>表示提交的描述信息</p>
+<h2 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h2><p>使用方式：</p>
+<blockquote>
+<p>$ docker run -it -v [主机目录]:[容器内目录] 容器 /bin/bash</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it -v /home/<span class="built_in">test</span>:/home centos /bin/bash</span></span><br></pre></td></tr></table></figure>
+
+
+<p>实战：</p>
+<p>将mysql配置目录和数据目录与主机目录进行双向绑定：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span></span><br><span class="line">da57dd0c24e10ccec927594c1c5adc83a5ae60207697cd8a2d73ed0a9b777059</span><br></pre></td></tr></table></figure>
 
             </div>
             
@@ -459,7 +497,7 @@
                         <a class="tag-none-link" href="/tags/Docker/" rel="tag">Docker</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-01-05</span>
+                    <span>最后编辑：2021-01-07</span>
                     </div>
                 </div>
             </footer>
@@ -471,6 +509,10 @@
                     <a title=" CodeLite调试时查看数组内容" href="/2021/01/03/CodeLite调试时查看数组内容/">&lt; 上一篇</a>
                 </div>
                 
+                
+                <div class="nav-next clearfix">
+                    <a title=" PPA" href="/2021/01/07/PPA/">下一篇 &gt;</a>
+                </div>
                 
             </nav>
         
@@ -505,7 +547,7 @@
   <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
     <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
       <div class="tag-clouds">
-        <a href="/tags/CodeLite/" style="font-size: 0.6em;">CodeLite</a> <a href="/tags/Docker/" style="font-size: 0.6em;">Docker</a> <a href="/tags/vscode/" style="font-size: 0.6em;">vscode</a>
+        <a href="/tags/CodeLite/" style="font-size: 0.6em;">CodeLite</a> <a href="/tags/Docker/" style="font-size: 0.6em;">Docker</a> <a href="/tags/ubuntu/" style="font-size: 0.6em;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 0.6em;">vscode</a>
       </div>
   </aside>
 
@@ -516,6 +558,12 @@
   <div class="tab-content">
       <ul class="list-group">
         
+        
+          
+          
+            <a class="list-group-item" href="/2021/01/07/PPA/"><i class="fa  fa-book"></i> PPA</a>
+            
+          
         
           
           
@@ -532,12 +580,6 @@
           
           
             <a class="list-group-item" href="/2021/01/02/vscode%E9%85%8D%E7%BD%AEc-%E7%8E%AF%E5%A2%83/"><i class="fa  fa-book"></i> vscode配置c++环境</a>
-            
-          
-        
-          
-          
-            <a class="list-group-item" href="/2021/01/02/article/index/"><i class="fa  fa-book"></i> article3</a>
             
           
         
