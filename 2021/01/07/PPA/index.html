@@ -24,7 +24,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
 <meta property="article:published_time" content="2021-01-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-08T03:50:46.568Z">
+<meta property="article:modified_time" content="2021-01-08T04:22:57.797Z">
 <meta property="article:author" content="realxz">
 <meta property="article:tag" content="ubuntu">
 <meta name="twitter:card" content="summary">
@@ -138,7 +138,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~1.66K
+                            ~2.19K
                         
                         字
                         
@@ -172,7 +172,15 @@
 <p>所以，这就意味着使用DEB包安装的软件将永远不会获得更新？不是，这要看这个包是如何被创建的。</p>
 <p>一些开发者自动添加一个条目到<code>sources.list</code>，然后这个软件就像常规软件那样更新。Google Chrome就是这样一个例子。</p>
 <p>当你试图运行一些软件时，它会通知你新版本的可用性。你将不得不下载一个新的DEB包，然后再次运行以更新当前软件到一个新的版本。Oracle Virtual Box就是这样一个例子。</p>
-<p>对于剩下的DEB包，你将不得不手动寻找一个更新，并且这样并不方便，特别是如果你的软件是为了</p>
+<p>对于剩下的DEB包，你将不得不手动寻找一个更新，并且这样并不方便，特别是如果你的软件是为了beta测试者。你需要频繁地添加更多的更新。这就是PPA抢救的地方。</p>
+<h2 id="官方的PPA-vs-非官方的PPA"><a href="#官方的PPA-vs-非官方的PPA" class="headerlink" title="官方的PPA vs 非官方的PPA"></a>官方的PPA vs 非官方的PPA</h2><p>你可能听说过官方的PPA和非官方的PPA。两者有什么不同？</p>
+<p>当开发者为他们的软件创建一个PPA时，这个PPA就被称作官方的PPA。很明显，它来自于项目开发人员。</p>
+<p>但是有时候，个人创建一个项目的PPA，但这个项目由其他人创建。</p>
+<p>为什么有些人这样做？因为有些开发人员仅仅提供软件的源代码，并且你知道<a target="_blank" rel="noopener" href="https://itsfoss.com/install-software-from-source-code/">installing software from source code in Linux</a> 是痛苦的，不是所有人可以或者愿意这样做。</p>
+<p>这就是为什么志愿者自己根据这些源代码创建PPA，以便其他使用者能容易地安装软件，毕竟，使用那3行命令要比源代码安装容易的多。</p>
+<h2 id="确保PPA对你的发行版本是可用的"><a href="#确保PPA对你的发行版本是可用的" class="headerlink" title="确保PPA对你的发行版本是可用的"></a>确保PPA对你的发行版本是可用的</h2><p>当在Ubuntu或其他基于Debian的发行版来说，有一点事情要牢记。</p>
+<p>不是所有的PPA对你的特定的发行版是可用的。你应该知道<a>哪一个Ubuntu版本</a>是你正在使用的。发行的codename是重要的，因为当你转到某个PPA网页时，你能看到那一个Ubuntu版本是PPA所支持的。</p>
+<p>对于其他基于Ubuntu的发行版，你可以检查这目录<code>/etc/os-release</code>，找到Ubuntu 的版本信息。</p>
 
             </div>
             
