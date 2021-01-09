@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>Hello World | 小泽のブログ</title>
+  <title>使用Dockerfile构建镜像 | 小泽のブログ</title>
   <meta name="author" content="realxz" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -13,19 +13,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="Docker" />
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="使用Dockerfile构建镜像常用的Dockerfile指令：  FORM             # 基础环境镜像，一切从这里构建 MAINTAINER # 镜像是谁写的，姓名+邮箱 RUN                # 镜像构建时需要运行的命令 ADD                # COPY文件，会自动解压 WORKDIR       # 镜像的工作目录 VOLUME">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/01/01/hello-world/index.html">
+<meta property="og:title" content="使用Dockerfile构建镜像">
+<meta property="og:url" content="http://example.com/2021/01/09/%E4%BD%BF%E7%94%A8Dockerfile%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/index.html">
 <meta property="og:site_name" content="小泽のブログ">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="使用Dockerfile构建镜像常用的Dockerfile指令：  FORM             # 基础环境镜像，一切从这里构建 MAINTAINER # 镜像是谁写的，姓名+邮箱 RUN                # 镜像构建时需要运行的命令 ADD                # COPY文件，会自动解压 WORKDIR       # 镜像的工作目录 VOLUME">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
-<meta property="article:published_time" content="2021-01-01T07:22:59.521Z">
-<meta property="article:modified_time" content="2021-01-08T13:56:00.737Z">
+<meta property="article:published_time" content="2021-01-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-09T10:51:43.421Z">
 <meta property="article:author" content="realxz">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/null">
 <meta name="twitter:site" content="@Candiinya">
@@ -127,17 +128,17 @@
     <article>
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
-                <h1 class="kratos-entry-title text-center">Hello World</h1>
+                <h1 class="kratos-entry-title text-center">使用Dockerfile构建镜像</h1>
                 
                 <div class="kratos-post-meta text-center">
                     <span>
-                        <i class="fa fa-calendar"></i> 2021-01-01
+                        <i class="fa fa-calendar"></i> 2021-01-09
                         <i class="fa fa-folder"></i> 分类于 
                         <i class="fa fa-user"></i> 作者 realxz
                         <i class="fa fa-edit"></i> 
                         
                         
-                            662
+                            ~3.21K
                         
                         字
                         
@@ -147,45 +148,36 @@
             <div class="kratos-post-content">
                 
                 <hr />
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<div class="alert alert-success">成功啦o(*￣▽￣*)ブ</div>
-<div class="alert alert-danger">有危险Σ(っ °Д °;)っ</div>
-<div class="alert alert-info">有消息(・∀・(・∀・(・∀・*)</div>
-<div class="alert alert-warning">当心哦≧ ﹏ ≦</div>
-
-
-
-<div class="xControl">
-    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>折叠框的标题</span></div>
-    <div class="xContent"><div class="inner">
-        <p>被折叠的内容 1<br>被折叠的内容 2<br>…</p>
- 
-    </div></div>
-    </div>
-
-
-<div class="panel panel-TYPE">
-    <div class="panel-title">面板框的标题</div>
-    <div class="panel-body">
-        <p>面板里的内容 1<br>面板里的内容 2<br>…</p>
-
-    </div>
-    </div>
-
-<p>TYPE是面板框的类型，可以是：</p>
-<pre><code>successs
-danger
-info
-warning</code></pre>
-<p><font color='red'>test </font></p>
+                <h2 id="使用Dockerfile构建镜像"><a href="#使用Dockerfile构建镜像" class="headerlink" title="使用Dockerfile构建镜像"></a>使用Dockerfile构建镜像</h2><p>常用的Dockerfile指令：</p>
+<blockquote>
+<p>FORM             # 基础环境镜像，一切从这里构建</p>
+<p>MAINTAINER # 镜像是谁写的，姓名+邮箱</p>
+<p>RUN                # 镜像构建时需要运行的命令</p>
+<p>ADD                # COPY文件，会自动解压</p>
+<p>WORKDIR       # 镜像的工作目录</p>
+<p>VOLUME         # 挂载的目录</p>
+<p>EXPOSE           # 暴露端口配置</p>
+<p>CMD                # 指定这个端口启动时要运行的命令，只有最后一个会生效，可被替代</p>
+<p>ENTRYPOINT  # 指定这个端口启动时要运行的命令，可以追加命令</p>
+<p>ONBUILD        # 当构建一个被继承Dockerfile，这个时候就会运行 ONBUILD指令，触发指令</p>
+<p>COPY               # 类似ADD，将我们的文件拷贝到镜像中</p>
+<p>ENV                  # 构建时候设置环境变量 </p>
+</blockquote>
+<h2 id="测试：构建一个属于自己的centos"><a href="#测试：构建一个属于自己的centos" class="headerlink" title="测试：构建一个属于自己的centos"></a>测试：构建一个属于自己的centos</h2><p>官方提供的centos镜像功能比较少，有些命令没有，比如：vim、ifconfig命令。</p>
+<p>下面新建一个自定义Dockerfile文件，根据该文件构建一个包含vim、ifconfig命令的centos镜像。</p>
+<p><strong>步骤1：编写<font color='red'>Dockerfile文件</font>（文件名为mydockerfile-centos）：</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">MAINTAINER</span> lize&lt;<span class="number">1729498179</span>@qq.com&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> MYPATH /usr/local</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> <span class="variable">$MYPATH</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum -y install vim</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum -y install net-tools</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$MYPATH</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;-----end------&quot;</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> /bin/bash</span></span><br></pre></td></tr></table></figure>
+<p><strong>步骤2：使用<font color='red'>docker build命令</font>构建自定义镜像</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker build -f mydockerfile-centos -t mycentos:0.1 .</span></span><br></pre></td></tr></table></figure>
+<p><strong>步骤3：使用自定义镜像<font color='red'>新建一个容器并运行</font></strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it mycentos:0.1</span></span><br><span class="line">[root@c4898d11d6f0 local]# ifconfig</span><br><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.17.0.5  netmask 255.255.0.0  broadcast 172.17.255.255</span><br><span class="line">        ether 02:42:ac:11:00:05  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 23  bytes 3506 (3.4 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">[root@c4898d11d6f0 local]# vim test.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以看到在这个容器中可以使用vim和ifconfig命令了。</p>
+<h2 id="拓展：查看镜像构建信息"><a href="#拓展：查看镜像构建信息" class="headerlink" title="拓展：查看镜像构建信息"></a>拓展：查看镜像构建信息</h2><p>使用方法：</p>
+<blockquote>
+<p><font color='red'>docker history [镜像ID]</font></p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker <span class="built_in">history</span> 6366488f8808</span></span><br><span class="line">IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT</span><br><span class="line">6366488f8808   15 minutes ago   /bin/sh -c #(nop)  CMD [&quot;/bin/sh&quot; &quot;-c&quot; &quot;/bin…   0B        </span><br><span class="line">af1077aebb21   15 minutes ago   /bin/sh -c #(nop)  CMD [&quot;/bin/sh&quot; &quot;-c&quot; &quot;echo…   0B        </span><br><span class="line">bfbd94640b13   15 minutes ago   /bin/sh -c #(nop)  CMD [&quot;/bin/sh&quot; &quot;-c&quot; &quot;echo…   0B        </span><br><span class="line">40c2064da313   15 minutes ago   /bin/sh -c #(nop)  EXPOSE 80                    0B        </span><br><span class="line">902c67b4a156   15 minutes ago   /bin/sh -c yum -y install net-tools             23.4MB    </span><br><span class="line">db8d734a53a3   15 minutes ago   /bin/sh -c yum -y install vim                   58.1MB    </span><br><span class="line">2f1b2c15ebcf   23 minutes ago   /bin/sh -c #(nop) WORKDIR /usr/local            0B        </span><br><span class="line">71fd07af8e5c   23 minutes ago   /bin/sh -c #(nop)  ENV MYPATH=/usr/local        0B        </span><br><span class="line">1e96df00e9c4   23 minutes ago   /bin/sh -c #(nop)  MAINTAINER lize&lt;172949817…   0B        </span><br><span class="line">300e315adb2f   4 weeks ago      /bin/sh -c #(nop)  CMD [&quot;/bin/bash&quot;]            0B        </span><br><span class="line">&lt;missing&gt;      4 weeks ago      /bin/sh -c #(nop)  LABEL org.label-schema.sc…   0B        </span><br><span class="line">&lt;missing&gt;      4 weeks ago      /bin/sh -c #(nop) ADD file:bd7a2aed6ede423b7…   209MB</span><br></pre></td></tr></table></figure>
 
             </div>
             
@@ -239,7 +231,7 @@ warning</code></pre>
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2021/01/01/hello-world/",
+                text: "http://example.com/2021/01/09/%E4%BD%BF%E7%94%A8Dockerfile%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -251,9 +243,13 @@ warning</code></pre>
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2021/01/01/hello-world/";
-            const title         = "「Hello World」";
-            const excerpt       = `Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...`;
+            const hostUrl       = "http://example.com/2021/01/09/%E4%BD%BF%E7%94%A8Dockerfile%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/";
+            const title         = "「使用Dockerfile构建镜像」";
+            const excerpt       = `使用Dockerfile构建镜像常用的Dockerfile指令：
+
+FORM             # 基础环境镜像，一切从这里构建
+MAINTAINER # 镜像是谁写的，姓名+邮箱
+RUN                # 镜像...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -272,10 +268,10 @@ warning</code></pre>
                 <div class="footer-tag clearfix">
                     <div class="pull-left">
                     <i class="fa fa-tags"></i>
-                        
+                        <a class="tag-none-link" href="/tags/Docker/" rel="tag">Docker</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-01-08</span>
+                    <span>最后编辑：2021-01-09</span>
                     </div>
                 </div>
             </footer>
@@ -283,9 +279,13 @@ warning</code></pre>
         
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
+                <div class="nav-previous clearfix">
+                    <a title=" Docker匿名挂载和具名挂载" href="/2021/01/08/Docker匿名挂载和具名挂载/">&lt; 上一篇</a>
+                </div>
+                
                 
                 <div class="nav-next clearfix">
-                    <a title=" vscode配置c++环境" href="/2021/01/02/vscode配置c-环境/">下一篇 &gt;</a>
+                    <a title=" Docker容器之间同步数据" href="/2021/01/09/Docker容器之间同步数据/">下一篇 &gt;</a>
                 </div>
                 
             </nav>
