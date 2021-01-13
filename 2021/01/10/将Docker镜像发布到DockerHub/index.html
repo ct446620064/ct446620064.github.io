@@ -4,7 +4,7 @@
   <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="">
-  <title>Docker匿名挂载和具名挂载 | 小泽のブログ</title>
+  <title>将镜像发布到DockerHub | 小泽のブログ</title>
   <meta name="author" content="realxz" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -15,16 +15,16 @@
   
     <meta name="keywords" content="Docker" />
   
-  <meta name="description" content="总结： -v 容器内路径                         #匿名挂载 -v 卷名:容器内路径                #具名挂载 -v &#x2F;宿主机路径:容器内路径    #指定路径挂载  使用数据卷挂载时通常要指定主机目录和容器内目录。 而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。 匿名挂载示例：-v 后面只用写容器内的目录">
+  <meta name="description" content="步骤1：在DockerHub上注册帐号。 步骤2：本地登录DockerHub帐号  docker login  步骤3：使用docker tag命令将镜像重新命令并设置版本号 docker tag命令使用方式：  docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]  如果要发布镜像到DockerHub，则TARGET_IMAGE的格式为 namespa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker匿名挂载和具名挂载">
-<meta property="og:url" content="http://example.com/2021/01/08/Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/index.html">
+<meta property="og:title" content="将镜像发布到DockerHub">
+<meta property="og:url" content="http://example.com/2021/01/10/%E5%B0%86Docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0DockerHub/index.html">
 <meta property="og:site_name" content="小泽のブログ">
-<meta property="og:description" content="总结： -v 容器内路径                         #匿名挂载 -v 卷名:容器内路径                #具名挂载 -v &#x2F;宿主机路径:容器内路径    #指定路径挂载  使用数据卷挂载时通常要指定主机目录和容器内目录。 而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。 匿名挂载示例：-v 后面只用写容器内的目录">
+<meta property="og:description" content="步骤1：在DockerHub上注册帐号。 步骤2：本地登录DockerHub帐号  docker login  步骤3：使用docker tag命令将镜像重新命令并设置版本号 docker tag命令使用方式：  docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]  如果要发布镜像到DockerHub，则TARGET_IMAGE的格式为 namespa">
 <meta property="og:locale">
 <meta property="og:image" content="http://example.com/null">
-<meta property="article:published_time" content="2021-01-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-08T14:20:32.025Z">
+<meta property="article:published_time" content="2021-01-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-11T09:11:59.345Z">
 <meta property="article:author" content="realxz">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -128,17 +128,17 @@
     <article>
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
-                <h1 class="kratos-entry-title text-center">Docker匿名挂载和具名挂载</h1>
+                <h1 class="kratos-entry-title text-center">将镜像发布到DockerHub</h1>
                 
                 <div class="kratos-post-meta text-center">
                     <span>
-                        <i class="fa fa-calendar"></i> 2021-01-08
+                        <i class="fa fa-calendar"></i> 2021-01-10
                         <i class="fa fa-folder"></i> 分类于 
                         <i class="fa fa-user"></i> 作者 realxz
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~1.65K
+                            285
                         
                         字
                         
@@ -148,24 +148,22 @@
             <div class="kratos-post-content">
                 
                 <hr />
-                <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
-<p>-v 容器内路径                         #匿名挂载</p>
-<p>-v 卷名:容器内路径                #具名挂载</p>
-<p>-v /宿主机路径:容器内路径    #指定路径挂载</p>
+                <p>步骤1：在DockerHub上注册帐号。</p>
+<p>步骤2：本地登录DockerHub帐号</p>
+<blockquote>
+<p>docker login</p>
 </blockquote>
-<p>使用数据卷挂载时通常要指定主机目录和容器内目录。</p>
-<p>而匿名挂载是不指定主机目录，让Docker在主机生成一个目录用来完成主机目录和容器目录之间的挂载。</p>
-<h4 id="匿名挂载示例："><a href="#匿名挂载示例：" class="headerlink" title="匿名挂载示例："></a>匿名挂载示例：</h4><p>-v 后面<font color='red'>只用写容器内的目录</font></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -P --name nginx01 -v /etc/nginx nginx</span></span><br></pre></td></tr></table></figure>
-<h4 id="查看已挂载的卷："><a href="#查看已挂载的卷：" class="headerlink" title="查看已挂载的卷："></a>查看已挂载的卷：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker volume ls</span></span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     b3b5c49a7b70d051d7e6016315802e0e76e2fcf51c6f063154e6003ea4bacc64</span><br><span class="line">local     c2e4e840333c3822a97c72237aa193a5c86117814d3d650b784a4ebde775dafc</span><br><span class="line">local     cout-test-vol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="具名挂载示例："><a href="#具名挂载示例：" class="headerlink" title="具名挂载示例："></a>具名挂载示例：</h4><p>-v后面的格式是<font color='red'>主机卷名称:容器内目录 </font></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -P --name nginx02 -v test-nginx:/etc/nginx nginx</span></span><br></pre></td></tr></table></figure>
-<h4 id="再次查看已挂载的卷："><a href="#再次查看已挂载的卷：" class="headerlink" title="再次查看已挂载的卷："></a>再次查看已挂载的卷：</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker volume ls</span> </span><br><span class="line">DRIVER    VOLUME NAME</span><br><span class="line">local     b3b5c49a7b70d051d7e6016315802e0e76e2fcf51c6f063154e6003ea4bacc64</span><br><span class="line">local     c2e4e840333c3822a97c72237aa193a5c86117814d3d650b784a4ebde775dafc</span><br><span class="line">local     cout-test-vol</span><br><span class="line">local     test-nginx</span><br></pre></td></tr></table></figure>
-<p>多出一个名为<code>test-nginx </code>的卷。</p>
-<p>查看这个卷的详细信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker volume inspect test-nginx</span></span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;CreatedAt&quot;: &quot;2021-01-08T22:01:26+08:00&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Labels&quot;: null,</span><br><span class="line">        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/test-nginx/_data&quot;,</span><br><span class="line">        &quot;Name&quot;: &quot;test-nginx&quot;,</span><br><span class="line">        &quot;Options&quot;: null,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>可见，Docker将主机上生成了<code>/var/lib/docker/volumes/test-nginx/_data</code>目录，并将该目录与容器内指定目录进行了双向绑定。</p>
-<h2 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 通过 -v 容器内路径: ro rw 改变读写权限</span></span><br><span class="line">ro read only	# 只读</span><br><span class="line">rw read write	# 可读可写</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 一旦设置了容器权限，容器对我们挂在出来的内容就有限定了</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -P --name nginx02 -v test-nginx:/etc/nginx:ro nginx</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker run -d -P --name nginx02 -v test-nginx:/etc/nginx:rw nginx</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ro 只要看到ro就说明这个路径只能通过宿主机来操作，而容器内部无法操作</span></span><br></pre></td></tr></table></figure>
+<p>步骤3：使用<code>docker tag</code>命令将镜像重新命令并设置版本号</p>
+<p>docker tag命令使用方式：</p>
+<blockquote>
+<p>docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</p>
+</blockquote>
+<p>如果要发布镜像到DockerHub，则TARGET_IMAGE的格式为 <font color="red">namespace/imagename</font>。</p>
+<p>namespace就是DockerHub的用户名</p>
+<p>步骤4：使用命令提交镜像</p>
+<blockquote>
+<p>docker push TARGET_IMAGE[:TAG]</p>
+</blockquote>
 
             </div>
             
@@ -219,7 +217,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2021/01/08/Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/",
+                text: "http://example.com/2021/01/10/%E5%B0%86Docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0DockerHub/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -231,14 +229,17 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2021/01/08/Docker%E5%8C%BF%E5%90%8D%E6%8C%82%E8%BD%BD%E5%92%8C%E5%85%B7%E5%90%8D%E6%8C%82%E8%BD%BD/";
-            const title         = "「Docker匿名挂载和具名挂载」";
-            const excerpt       = `总结：
--v 容器内路径                         #匿名挂载
--v 卷名:容器内路径                #具名挂载
--v /宿主机路径:容器内路径    #指定路径挂载
+            const hostUrl       = "http://example.com/2021/01/10/%E5%B0%86Docker%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0DockerHub/";
+            const title         = "「将镜像发布到DockerHub」";
+            const excerpt       = `步骤1：在DockerHub上注册帐号。
+步骤2：本地登录DockerHub帐号
 
-使用数据卷挂载时通常要指定...`;
+docker login
+
+步骤3：使用docker tag命令将镜像重新命令并设置版本号
+docker tag命令使用方式：
+
+docker tag...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -260,7 +261,7 @@
                         <a class="tag-none-link" href="/tags/Docker/" rel="tag">Docker</a>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：2021-01-08</span>
+                    <span>最后编辑：2021-01-11</span>
                     </div>
                 </div>
             </footer>
@@ -269,12 +270,12 @@
             <nav class="navigation post-navigation clearfix" role="navigation">
                 
                 <div class="nav-previous clearfix">
-                    <a title=" 使用dockerfile创建Docker镜像" href="/2021/01/08/使用dockerfile创建Docker镜像/">&lt; 上一篇</a>
+                    <a title=" 使用Dockerfile构建镜像" href="/2021/01/09/使用Dockerfile构建镜像/">&lt; 上一篇</a>
                 </div>
                 
                 
                 <div class="nav-next clearfix">
-                    <a title=" Docker容器之间同步数据" href="/2021/01/09/Docker容器之间同步数据/">下一篇 &gt;</a>
+                    <a title=" A Docker Guide for Java" href="/2021/01/12/A Docker Guide for Java/">下一篇 &gt;</a>
                 </div>
                 
             </nav>
